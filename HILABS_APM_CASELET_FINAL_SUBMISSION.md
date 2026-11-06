@@ -208,3 +208,4 @@ flowchart TD
 
 ### Q4: "How did you arrive at the -85% case prep time estimate?"
 > **Answer**: *"Our time study breaks case prep into discrete micro-tasks: logging into 6 portals (8 min), searching HIE for discharge summaries (6 min), verifying pharmacy fills (5 min), and untangling conflicting drug names (3 min). CareOS consolidates these feeds into a single pre-reconciled view, reducing prep to a single 3-minute chart review."*
+
