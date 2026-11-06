@@ -1,0 +1,16 @@
+# Ignore temporary build scripts and intermediate test artifacts
+build_*.py
+prep_screens.py
+screen1.html
+screen2.html
+screen3.html
+screen1.png
+screen1_light_queue.png
+screen2_light_m360.png
+screen3_light_outreach.png
+screen1_prioritized_work_queue.png
+screen2_unified_member_360.png
+screen3_outreach_documentation.png
+*.log
+__pycache__/
+.vscode/

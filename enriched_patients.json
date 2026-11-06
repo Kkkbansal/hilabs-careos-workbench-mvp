@@ -1,0 +1,391 @@
+{
+  "SYN-001": {
+    "id": "SYN-001",
+    "name": "Aarav Mehta",
+    "age": 72,
+    "gender": "Male",
+    "plan": "Medicare Advantage",
+    "program": "Transitions of Care / Heart Failure",
+    "scenario": "Fresh heart-failure discharge",
+    "score": 96,
+    "priority_level": "CRITICAL",
+    "urgency_trigger": "Hospital Discharge Alert: St. Jude Medical Ctr (14h ago) \u2022 48h TOC Window",
+    "pcp": "Dr. Ramesh Iyer, MD (In-Network)",
+    "language": "Hindi (Preferred) / English",
+    "contact_person": "Daughter Priya (Primary Caregiver)",
+    "phone": "(555) 349-8812",
+    "best_time": "11:00 AM - 2:00 PM",
+    "sdoh": "Lives with daughter \u2022 No independent vehicle \u2022 Low physical activity",
+    "summary": "Admitted 2026-10-31 for acute heart failure exacerbation; discharged 2026-11-04. Hospital prescribed Furosemide 40mg daily and Carvedilol 6.25mg BID. No paid claim found for Furosemide in PBM feed. 47-day medical claims lag hides recent inpatient event. Duplicate EV-771 discharge alert received.",
+    "imperfections": [
+      {
+        "type": "Claims Lag",
+        "detail": "Medical claims feed lag is 47 days; recent admission missing from claims."
+      },
+      {
+        "type": "Pharmacy Signal",
+        "detail": "Absence of furosemide paid claim does not confirm non-pickup (could be discount card or 90d sample)."
+      },
+      {
+        "type": "Duplicate Feed",
+        "detail": "Duplicate ADT discharge event EV-771 arrived 2 mins after original."
+      }
+    ],
+    "monday_action": "Verify medication access (Furosemide), reconcile discharge drugs, confirm daughter's availability, and coordinate 7-day PCP visit with transport.",
+    "medications": [
+      {
+        "drug": "Furosemide",
+        "dose": "40 mg Oral Daily",
+        "source": "EHR Discharge (14h ago)",
+        "status": "Missing Paid Fill",
+        "conflict": "Prescribed at hospital; no retail fill in PBM. Abandonment or sample risk.",
+        "recommendation": "Confirm whether pharmacy dispensed or patient has supply"
+      },
+      {
+        "drug": "Carvedilol",
+        "dose": "6.25 mg Oral BID",
+        "source": "PBM Paid Claim (Yesterday)",
+        "status": "Active & Paid",
+        "conflict": "Matches discharge instructions.",
+        "recommendation": "Maintain dose"
+      },
+      {
+        "drug": "Lisinopril",
+        "dose": "10 mg Oral Daily",
+        "source": "Claims (47d old)",
+        "status": "Potential Discontinuation",
+        "conflict": "Omitted from hospital discharge summary. Risk of double ACE/ARB if restarted.",
+        "recommendation": "Clinician confirmation: verify hospital discontinued"
+      }
+    ],
+    "talking_points": [
+      "1. Confirm Aarav arrived home safely and check for breathing difficulty / leg swelling.",
+      "2. Clarify status of Furosemide water pill: did daughter pick it up or receive hospital samples?",
+      "3. Reconcile Lisinopril: confirm it is discontinued to prevent hypotension.",
+      "4. Book follow-up visit with Dr. Ramesh Iyer within 7 days; offer plan medical transport voucher."
+    ],
+    "transcript": [
+      {
+        "speaker": "Maria (RN)",
+        "text": "Namaste Priya, this is Maria Gonzalez, registered nurse from Medicare Advantage Care Management calling regarding your father Aarav."
+      },
+      {
+        "speaker": "Priya (Daughter)",
+        "text": "Namaste Maria. Yes, my father came home yesterday afternoon. He is resting in bed."
+      },
+      {
+        "speaker": "Maria (RN)",
+        "text": "I see he was prescribed Furosemide for fluid buildup. Did you get a chance to fill that at the pharmacy?"
+      },
+      {
+        "speaker": "Priya (Daughter)",
+        "text": "The hospital pharmacy gave us a 3-day starter blister pack before leaving! But we need to refill the full 30-day bottle at CVS tomorrow."
+      },
+      {
+        "speaker": "Maria (RN)",
+        "text": "That is wonderful! So he has not missed any doses today. Make sure he does not take his old Lisinopril pill anymore."
+      }
+    ]
+  },
+  "SYN-002": {
+    "id": "SYN-002",
+    "name": "Nisha Patel",
+    "age": 58,
+    "gender": "Female",
+    "plan": "Commercial PPO",
+    "program": "Diabetes / Rising Risk",
+    "scenario": "Rising-risk diabetic with refill interruption",
+    "score": 89,
+    "priority_level": "RISING RISK",
+    "urgency_trigger": "HbA1c jumped to 9.1% \u2022 Reversed Pharmacy Claim on Metformin \u2022 Repeat ED visits",
+    "pcp": "Dr. Susan Miller, MD",
+    "language": "English / Gujarati",
+    "contact_person": "Self",
+    "phone": "(555) 782-9910",
+    "best_time": "Evening 6:00 PM - 8:30 PM",
+    "sdoh": "Works retail shifts \u2022 Food insecurity / high-carb diet \u2022 Rx affordability stress",
+    "summary": "Rising risk diabetic with HbA1c deteriorating to 9.1%. Pharmacy feed shows a reversed claim for Metformin 1000mg last month. Medical claims show ED visit for hyperglycemic dizziness 2 weeks ago, but diagnosis code was delayed.",
+    "imperfections": [
+      {
+        "type": "Reversed Rx Claim",
+        "detail": "Pharmacy fill was entered then reversed 2 hours later at retail (abandoned due to cost)."
+      },
+      {
+        "type": "Conflicting Meds",
+        "detail": "EHR lists Glipizide 10mg; claims show Glimepiride 4mg; duplicate sulfonylurea risk."
+      },
+      {
+        "type": "Delayed Medical Claim",
+        "detail": "ED visit occurred 18 days ago, claim billed only 3 days ago."
+      }
+    ],
+    "monday_action": "Confirm actual medication intake, explore insulin/metformin cost barriers, verify evening availability, coordinate PCP medication alignment.",
+    "medications": [
+      {
+        "drug": "Metformin ER",
+        "dose": "1000 mg Oral Daily",
+        "source": "PBM Feed (Reversed Claim)",
+        "status": "Abandoned at Retail",
+        "conflict": "Claim reversed at counter ($75 copay tier). Patient went without refill.",
+        "recommendation": "Switch to generic Tier-1 or dispatch $0 copay card"
+      },
+      {
+        "drug": "Glimepiride",
+        "dose": "4 mg Daily",
+        "source": "Claims (Billed last mo)",
+        "status": "Active in Claims",
+        "conflict": "EHR lists Glipizide 10mg instead. Dangerous dual-sulfonylurea confusion.",
+        "recommendation": "Clinician override: clarify active prescription with Dr. Miller"
+      },
+      {
+        "drug": "Atorvastatin",
+        "dose": "20 mg Daily",
+        "source": "PBM (On time)",
+        "status": "Adherent",
+        "conflict": "No conflict detected.",
+        "recommendation": "Continue therapy"
+      }
+    ],
+    "talking_points": [
+      "1. Inquire gently about Metformin refill without sounding accusatory.",
+      "2. Offer generic $4/month retail option or manufacturer co-pay card.",
+      "3. Clarify whether taking Glipizide or Glimepiride to prevent hypoglycemic crashes.",
+      "4. Coordinate diabetes educator call during her preferred evening window."
+    ],
+    "transcript": [
+      {
+        "speaker": "Maria (RN)",
+        "text": "Hello Nisha, this is Maria from your health plan. I am calling to check in on your diabetes medications and lab numbers."
+      },
+      {
+        "speaker": "Nisha",
+        "text": "Hello Maria. Yes, I've had some trouble. The pharmacy said my copay on Metformin ER went up to $65 this month so I didn't take it home."
+      },
+      {
+        "speaker": "Maria (RN)",
+        "text": "I am so glad you told me. That medication is available in immediate release for $4 at Walmart or through our mail order for $0."
+      },
+      {
+        "speaker": "Nisha",
+        "text": "Really? Nobody explained that to me at the counter. That would help so much with my monthly expenses."
+      }
+    ]
+  },
+  "SYN-003": {
+    "id": "SYN-003",
+    "name": "Rohan Das",
+    "age": 46,
+    "gender": "Male",
+    "plan": "Medicaid Managed Care",
+    "program": "Utilization / Outreach",
+    "scenario": "Unreachable frequent ED user",
+    "score": 84,
+    "priority_level": "HIGH UTILIZATION",
+    "urgency_trigger": "3 ED Visits in 45 Days \u2022 Disconnected Primary Phone \u2022 No Established PCP Linkage",
+    "pcp": "Unassigned / Federally Qualified Health Center (FQHC) recommended",
+    "language": "English / Bengali",
+    "contact_person": "Shelter Case Worker / Alternate Contact on file",
+    "phone": "(555) 991-0023 (Disconnected)",
+    "best_time": "Morning 9:00 AM",
+    "sdoh": "Transitional housing \u2022 No transport \u2022 Uninsured dental / chronic pain",
+    "summary": "46-year-old Medicaid recipient with 3 recent ED presentations for acute dental pain and abdominal discomfort. Registered primary phone is disconnected. Claim records contain duplicate billing for ED facility fees. Prior care plan stale.",
+    "imperfections": [
+      {
+        "type": "Disconnected Phone",
+        "detail": "Primary phone on file returns operator disconnect message; alternate number is 14 months stale."
+      },
+      {
+        "type": "Duplicate Claim",
+        "detail": "Duplicate CPT-99284 emergency room claim submitted under two provider NPIs."
+      },
+      {
+        "type": "Stale Care Plan",
+        "detail": "Previous case manager note is over 18 months old with outdated emergency contact."
+      }
+    ],
+    "monday_action": "Validate alternate contact via recent hospital encounter face sheet; route to Community Health Worker for in-person outreach; link to dental/FQHC.",
+    "medications": [
+      {
+        "drug": "Amoxicillin",
+        "dose": "500 mg TID x 7d",
+        "source": "Hospital ED Dispensary",
+        "status": "Completed course",
+        "conflict": "Antibiotic prescribed for dental abscess.",
+        "recommendation": "Confirm resolution"
+      },
+      {
+        "drug": "Ibuprofen",
+        "dose": "800 mg TID PRN",
+        "source": "EHR Note",
+        "status": "PRN Pain",
+        "conflict": "High GI bleeding risk with repeated ED usage.",
+        "recommendation": "Connect with dental clinic"
+      }
+    ],
+    "talking_points": [
+      "1. Cross-reference recent hospital registration face sheet for newly entered temporary contact.",
+      "2. If unreachable, trigger Community Health Worker (CHW) field outreach at transitional housing center.",
+      "3. Coordinate dental benefit authorization to resolve root cause of repeat emergency visits."
+    ],
+    "transcript": [
+      {
+        "speaker": "System",
+        "text": "Outdialing primary contact (555) 991-0023... [Three tone disconnect sound]"
+      },
+      {
+        "speaker": "Automated Operator",
+        "text": "'The number you have dialed is no longer in service. Please check the number and dial again.'"
+      },
+      {
+        "speaker": "HiLabs Copilot",
+        "text": "Alternative contact discovered in St. Jude ED Face Sheet (dated 4 days ago): Case Worker Anita at Hope Community Shelter (555) 441-2991."
+      },
+      {
+        "speaker": "Maria (RN)",
+        "text": "1-click redirecting call to Shelter Case Worker Anita..."
+      }
+    ]
+  },
+  "SYN-004": {
+    "id": "SYN-004",
+    "name": "Sana Khan",
+    "age": 34,
+    "gender": "Female",
+    "plan": "Medicaid Managed Care",
+    "program": "Behavioral Health / SDOH",
+    "scenario": "Behavioral health + housing instability",
+    "score": 78,
+    "priority_level": "BEHAVIORAL & SDOH",
+    "urgency_trigger": "Behavioral Health ED Crisis (72h ago) \u2022 Housing Eviction Notice \u2022 Stale SDOH Survey",
+    "pcp": "Dr. Laura Vance, MD (Community Clinic)",
+    "language": "English / Urdu",
+    "contact_person": "Self (Consented Mobile SMS preferred)",
+    "phone": "(555) 612-4458 (SMS verified)",
+    "best_time": "Midday 1:00 PM - 3:00 PM",
+    "sdoh": "Severe housing insecurity (eviction pending) \u2022 Food desert \u2022 Single mother",
+    "summary": "34-year-old mother presenting to psychiatric emergency for panic episode triggered by eviction notice. Conflicting psychotropic medication regimens between inpatient discharge and outpatient pharmacy. SDOH survey is 10 months stale.",
+    "imperfections": [
+      {
+        "type": "Conflicting Meds",
+        "detail": "Discharge list shows Sertraline 50mg + Hydroxyzine 25mg; pharmacy claims show Fluoxetine 20mg filled 6 weeks ago."
+      },
+      {
+        "type": "Delayed Psych Claim",
+        "detail": "Crisis stabilization fee claim delayed by 3 weeks."
+      },
+      {
+        "type": "Stale SDOH Data",
+        "detail": "Housing status marked 'stable' in last year's survey; contradicted by recent crisis intake note."
+      }
+    ],
+    "monday_action": "Use consented SMS channel for gentle engagement; verify psychiatric med transition; connect immediately with housing navigator and food pantry.",
+    "medications": [
+      {
+        "drug": "Sertraline",
+        "dose": "50 mg Daily",
+        "source": "Crisis Center CCD",
+        "status": "New Therapy",
+        "conflict": "Replaced Fluoxetine; risk of serotonin syndrome if both taken simultaneously.",
+        "recommendation": "Verify patient discarded leftover Prozac"
+      },
+      {
+        "drug": "Hydroxyzine",
+        "dose": "25 mg PRN Anxiety",
+        "source": "EHR Discharge",
+        "status": "New PRN",
+        "conflict": "No conflict detected.",
+        "recommendation": "Confirm understanding of sedative effect"
+      }
+    ],
+    "talking_points": [
+      "1. Greet with trauma-informed, empathetic tone; honor privacy preferences.",
+      "2. Confirm she discontinued Fluoxetine before starting Sertraline.",
+      "3. Connect directly with health plan Housing Assistance Coordinator to stay eviction."
+    ],
+    "transcript": [
+      {
+        "speaker": "Maria (RN)",
+        "text": "Hi Sana, this is Maria, nurse case manager with your health plan. I wanted to see how you are feeling and help with your housing and health resources."
+      },
+      {
+        "speaker": "Sana",
+        "text": "Hi Maria. It is a bit hectic right now with the kids. I got the new medicine from the hospital, but I was scared to take it with my old pills."
+      },
+      {
+        "speaker": "Maria (RN)",
+        "text": "You made the right choice to pause and ask! You should stop the old Prozac completely. The new Sertraline replaces it."
+      }
+    ]
+  },
+  "SYN-005": {
+    "id": "SYN-005",
+    "name": "Meera Joshi",
+    "age": 79,
+    "gender": "Female",
+    "plan": "Medicare Advantage + Medicaid (Dual)",
+    "program": "Complex Care / Transitions",
+    "scenario": "Dual-eligible senior with caregiver strain",
+    "score": 75,
+    "priority_level": "COMPLEX CARE",
+    "urgency_trigger": "Fall with Hip Contusion \u2022 Home Health Referral Status Unknown \u2022 Son Caregiver Exhaustion",
+    "pcp": "Dr. Robert Chen, MD",
+    "language": "Hindi / Marathi / English",
+    "contact_person": "Son Vikram (Caregiver - Full Time Job)",
+    "phone": "(555) 883-9901",
+    "best_time": "After 6:00 PM (Son's request)",
+    "sdoh": "High fall risk home environment \u2022 Caregiver burnout \u2022 Cognitive slowing",
+    "summary": "79-year-old dual-eligible member discharged post-fall with severe hip contusion. Home health physical therapy referral status missing in feeds. Feeds show two duplicate member IDs across Medicaid and Medicare databases. Son requested calls after 6 PM.",
+    "imperfections": [
+      {
+        "type": "Duplicate Member ID",
+        "detail": "Medicare ID #M-99120 and State Medicaid ID #MED-4418 not reconciled in old system."
+      },
+      {
+        "type": "Missing Referral Status",
+        "detail": "Hospital ordered skilled nursing / physical therapy; authorization feed shows no active request."
+      },
+      {
+        "type": "Conflicting Meds",
+        "detail": "Hospital added Gabapentin for nerve pain; prior record flagged high fall risk on sedatives."
+      }
+    ],
+    "monday_action": "Reconcile duplicate IDs into single master patient index; escalate missing home health authorization; call son Vikram after 6 PM to evaluate caregiver respite support.",
+    "medications": [
+      {
+        "drug": "Gabapentin",
+        "dose": "100 mg QHS",
+        "source": "EHR Discharge Note",
+        "status": "New Addition",
+        "conflict": "Beers Criteria warning: High fall risk in 79yo senior with prior fall history.",
+        "recommendation": "Review safety with Dr. Chen; recommend physical therapy first"
+      },
+      {
+        "drug": "Amlodipine",
+        "dose": "5 mg Daily",
+        "source": "PBM & Claims",
+        "status": "Active",
+        "conflict": "Check for peripheral edema exacerbating mobility.",
+        "recommendation": "Maintain"
+      }
+    ],
+    "talking_points": [
+      "1. Schedule outreach for 6:15 PM per son's explicit instructions.",
+      "2. Expedite Home Health physical therapy authorization with utilization management.",
+      "3. Assess caregiver strain: offer plan-funded 20 hours/month respite care benefit."
+    ],
+    "transcript": [
+      {
+        "speaker": "System",
+        "text": "Outreach scheduled for 6:15 PM (Son Vikram's preferred window)."
+      },
+      {
+        "speaker": "Vikram (Son - 6:18 PM)",
+        "text": "Thank you for calling in the evening Maria. I've been so stressed trying to balance work while making sure mom doesn't fall getting to the bathroom."
+      },
+      {
+        "speaker": "Maria (RN)",
+        "text": "Vikram, you are doing an amazing job, but you do not have to carry this alone. I just pushed through the approval for a Physical Therapist to visit tomorrow, and your plan provides 20 hours of monthly in-home respite support."
+      }
+    ]
+  }
+}
